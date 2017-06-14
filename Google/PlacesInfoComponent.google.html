@@ -1,0 +1,111 @@
+<style>
+    .rllt__borderless {
+        border-top-width: 0;
+    }
+    
+    ._Db {
+        border-width: 0;
+        font-size: 13px;
+        line-height: 16px;
+        color: rgba(0, 0, 0, .54);
+        position: relative;
+    }
+    
+    ._gt {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        max-height: 106px;
+        min-height: 58px;
+    }
+    
+    ._sEo {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .rllt__link {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    ._iPk {
+        padding: 8px 0 8px 16px;
+    }
+    
+    ._Db.rllt__borderless ._Ml {
+        border-top: 0;
+    }
+    
+    ._Ml {
+        height: 90px;
+        margin-right: 16px;
+        position: relative;
+    }
+    
+    ._li {
+        height: 90px;
+        float: right;
+        margin: 0 0 8px 8px;
+        overflow: hidden;
+        position: relative;
+        width: 90px;
+    }
+    
+    ._rl {
+        color: #222;
+        font-size: 16px;
+        padding-bottom: 1px;
+        line-height: 20px;
+        margin-bottom: -1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    ._PXi {
+        color: #e7711b;
+    }
+    
+    ._R0s {
+        height: 1.2em;
+        overflow: hidden;
+    }
+    
+    .mt-3 {
+        margin-top: 6px;
+    }
+</style>
+<div ng-if="infoVdo.placeList && infoVdo.placeList.length">
+    <h4>
+        Result count: <strong> {{infoVdo.placeList.length}}</strong>
+    </h4>
+    <div class="_Db  rllt__borderless" data-ng-repeat="place in infoVdo.placeList">
+        <div class="_gt">
+            <a class="_sEo  rllt__link" target="{{place.name}}" href="https://www.google.co.in/webhp#q=" +place+ "&tbm=lcl&rldimm=10166597269985028317" role="link">
+                <div class="_iPk _Ml">
+                    <div class="_li">
+                        <img id="rlimg0" ng-src="{{place.icon}}" data-deferred="1" class="_VQf" style="border:0;left:0px;position:relative;top:0px" alt="" height="90" width="90" onload="google.aft&amp;&amp;google.aft(this)"></div>
+                    <div class="_rl" aria-level="3" role="heading">{{place.name}}</div>
+                    <span class="rllt__details lqhpac"><div><span class="_PXi">{{place.rating}}
+                         <span uib-rating ng-model="place.rating" max="5" read-only="true" aria-labelledby="default-rating"></span>
+                    </span>
+                    <span class="text-muted" data-ng-if="place.opening_hours.open_now">Open now</span>
+                </div>
+                <div></div>
+                <div><span>{{place.vicinity}}</span></div>
+                <div><span>{{place.formatted_address}}</span></div>
+                <div>
+                    <div class="_R0s">{{place.types.join(', ').split('_').join(' ')}}</div>
+                </div>
+                </span>
+        </div>
+        </a>
+    </div>
+</div>
+<div class="btn btn-info mt-3 col-md-2 col-xs-12" ng-click="events.onLoadMoreClicked()" ng-if="infoVdo.hasNextPage">
+    Load more
+</div>
+</div>
