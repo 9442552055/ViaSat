@@ -1,0 +1,23 @@
+{
+  "name": "viasat-test-angular",
+  "version": "1.0.0",
+  "description": "solution for viasat test",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "viasat",
+    "test"
+  ],
+  "author": "arunmozhi srinivasan",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "mime-types": "^2.1.15",
+    "request": "^2.81.0"
+  }
+}

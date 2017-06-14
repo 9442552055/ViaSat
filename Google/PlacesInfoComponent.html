@@ -1,0 +1,51 @@
+<div ng-if="infoVdo.placeList && infoVdo.placeList.length">
+    <h4>
+        Result count: <strong> {{infoVdo.placeList.length}}</strong>
+    </h4>
+    <!-- <ul>
+        <li data-ng-repeat="place in infoVdo.placeList" style="clear:both">
+            <span class="col-xs-12 col-md-3">
+                <img ng-src="{{place.icon}}" alt="place.icon" class="img-fluid">
+                <strong>{{place.name}}</strong>
+                <span class="float-right">{{place.rating||0}}</span>
+            </span>
+            <span class="col-xs-12 col-md-2">{{place.types.join(', ').split('_').join(' ')}}</span>
+            <span class="col-xs-12 col-md-4">{{place.formatted_address}}</span>
+            <span class="col-xs-12 col-md-4"> {{place.vicinity}}</span>
+        </li>
+    </ul>-->
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th class="col-xs-1"></th>
+                <th class="col-xs-2">Place</th>
+                <th class="col-xs-3">Address</th>
+                <th class="col-xs-1">Rating</th>
+                <th class="col-xs-2">Category</th>
+                <th class="col-xs-3">Vicinity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="place in infoVdo.placeList">
+                <th scope="row" class="col-xs-1">
+                    <img ng-src="{{place.icon}}" alt="place.icon" class="img-fluid">
+                </th>
+                <td class="col-xs-2">
+                    <h5><strong>{{place.name}}</strong></h5>
+                    <p class="text-muted"></p>
+                    <!--<i ng-repeat="t in place.types">{{t.split('_').join(' ')}} </i>-->
+                </td>
+                <td class="col-xs-4" style="text-overflow: ellipsis;word-wrap: break-word;">{{place.formatted_address}}</td>
+                <td class="col-xs-1">{{place.rating||'Not rated'}}</td>
+                <td class="col-xs-2">{{place.types.join(', ').split('_').join(' ')}}</td>
+                <td class="col-xs-2">
+                    {{place.vicinity}}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

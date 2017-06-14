@@ -1,0 +1,105 @@
+<!Doctype HTML5>
+<html>
+
+<head>
+    <title> ViaSat Test1 </title>
+
+    <meta charset="UTF-8" />
+
+    <meta name="description" content="ViaSat test1 with angularjs for google places api integration" />
+
+    <meta name="keywords" content="HTML, CSS, Angularjs, JavaScript" />
+
+    <meta name="author" content="Arunmozhi Srinivasan" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http--equiv="expires" CONTENT="Mon, 22 Jul 2017 12:12:01 GMT" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0px;
+            /*padding: 0px 5px;*/
+        }
+        
+        header {
+            background: lightblue;
+            height: 90px !important;
+            padding: 10px 0px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-icon {
+            float: left;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        /* Footer to push down */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: rgba(228, 228, 228, 1);
+        }
+        
+        .wrapper {
+            min-height: 100%;
+            /* Equal to height of footer */
+            /* But also accounting for potential margin-bottom of last child */
+            margin-bottom: -10px;
+        }
+        
+        .footer,
+        .push {
+            height: 60px;
+        }
+        
+        footer {
+            background: darkgray;
+            color: black;
+            padding: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="lib/angular.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <span class="menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+        </span>
+        <div class="text-center">
+            <h1>ViaSat</h1>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="container">
+            <search-places-component should-be-focused="true">
+                <places-info-component></places-info-component>
+            </search-places-component>
+        </div>
+
+        <div class="push"></div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="Google/googlePlaces.js"></script>
+
+        <script type="text/javascript" src="boot.js"></script>
+
+    </div>
+    <footer class="footer text-center">
+
+
+
+        <strong> © 2017 Copyright</strong>
+
+    </footer>
+</body>
+
+</html>

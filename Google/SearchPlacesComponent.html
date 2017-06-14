@@ -1,0 +1,48 @@
+<style>
+    .search-box {
+        border: 1px solid lightgray;
+        padding: 5px;
+        border-radius: 5px;
+        height: 45px;
+        font-size: larger;
+        margin: 5px;
+        width: 100%;
+    }
+    
+    .loading-places {
+        margin-top: 10px;
+    }
+    
+    .search-box-center {
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        width: 40%;
+    }
+    
+    .search-box-top {
+        margin: auto;
+        text-align: center;
+        width: 40%;
+    }
+    
+    .search-icon {
+        font-size: larger;
+        margin: 5px;
+    }
+    
+    .clear-both {
+        clear: both !important
+    }
+</style>
+
+<form name="form_search_places">
+    <div class="search-box-container" ng-class="{'search-box-center':!vdo.selectedVal,'search-box-top':vdo.selectedVal}">
+        <input name="text_search" type="text" ng-model-options="vdo.options" ng-model="vdo.search" placeholder="Search nearby" uib-typeahead="place.description for place in getPlaces($viewValue)" typeahead-no-results="noResults" typeahead-on-select="events.onSearchSelection($item)"
+            typeahead-loading="vdo.isLoadingLocations" class="search-box col-xs-10">
+        <!--<span class="glyphicon glyphicon-search search-icon"></span>-->
+    </div>
+    <i ng-show="vdo.isLoadingLocations " class="loading-places glyphicon glyphicon-refresh col-xs-2"></i>
+
+    <div class="clear-both" ng-transclude></div>
+</form>
