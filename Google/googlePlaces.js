@@ -5,7 +5,7 @@ angular.module('google-places', ['ui.bootstrap'])
         var gpProvider = this;
 
         gpProvider.config = {
-            MAP_RADIUS: 1000,
+            MAP_RADIUS: 10000,
             DEFAULT_LOCATION: '12.9153884,80.22565039999999',
             RESTRICT_RADIUS: false
         };
@@ -79,17 +79,46 @@ angular.module('google-places', ['ui.bootstrap'])
                 }
             };
 
-
+            var paginationParams = {};
 
             this.getPlaceDetails = function(query) {
                 if (!query) {
                     return $q.when([]);
                 }
-                var qParams = angular.extend({ keyword: query }, googlePlacesParams);
-                var url = 'maps/api/place/radarsearch/json';
+                var qParams = angular.extend({ query: query }, googlePlacesParams);
+                var url = 'maps/api/place/textsearch/json';
                 return $http.get(url, { params: qParams }).then(function(res) {
                     if (res.data.status && res.data.status.toLowerCase() === "ok") {
                         //getVicinityAsync(res);
+                        paginationParams.next_page_token = res.data.next_page_token;
+                        return res.data.results;
+                    } else {
+                        showGoogleError(res.data);
+                        return [];
+                    }
+                }, function(err) {
+                    showError("OOPS! Something went wrong. Retry after sometime.");
+                    return [];
+                });
+            };
+
+            this.hasNextPage = function() {
+                return paginationParams.next_page_token;
+            }
+
+            this.loadNextPage = function(listToAppend) {
+                if (!paginationParams.next_page_token) {
+                    return $q.when([]);
+                }
+                var qParams = angular.extend({ pagetoken: paginationParams.next_page_token }, googlePlacesParams);
+                var url = 'maps/api/place/textsearch/json';
+                return $http.get(url, { params: qParams }).then(function(res) {
+                    if (res.data.status && res.data.status.toLowerCase() === "ok") {
+                        //getVicinityAsync(res);
+                        paginationParams.next_page_token = res.data.next_page_token;
+                        for (var i = 0; listToAppend && i < res.data.results.length; i++) {
+                            listToAppend.push(res.data.results[i]);
+                        }
                         return res.data.results;
                     } else {
                         showGoogleError(res.data);
@@ -198,12 +227,21 @@ angular.module('google-places', ['ui.bootstrap'])
                     placeList: []
                 }
 
+                scope.events = {
+                    onLoadMoreClicked: function() {
+                        if (scope.infoVdo.hasNextPage = googlePlacesService.hasNextPage()) {
+                            googlePlacesService.loadNextPage(scope.infoVdo.placeList);
+                        }
+                    }
+                }
+
                 ctrl.on("ON_LOADING_PLACES", function() {
                     scope.infoVdo.placeList = [];
                 });
                 ctrl.on("ON_SEARCH_SELECTION", function(query) {
                     googlePlacesService.getPlaceDetails(query).then(function(list) {
                         scope.infoVdo.placeList = list;
+                        scope.infoVdo.hasNextPage = googlePlacesService.hasNextPage();
                     })
                 });
             }

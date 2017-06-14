@@ -33,7 +33,7 @@
                 </th>
                 <td class="col-xs-2">
                     <h5><strong>{{place.name}}</strong></h5>
-                    <p class="text-muted"></p>
+                    <p class="text-muted" data-ng-if="place.opening_hours.open_now">Open now</p>
                     <!--<i ng-repeat="t in place.types">{{t.split('_').join(' ')}} </i>-->
                 </td>
                 <td class="col-xs-4" style="text-overflow: ellipsis;word-wrap: break-word;">{{place.formatted_address}}</td>
@@ -46,6 +46,8 @@
             </tr>
         </tbody>
     </table>
-
+    <div class="btn btn-info" ng-click="events.onLoadMoreClicked()" ng-if="infoVdo.hasNextPage">
+        Load more
+    </div>
 
 </div>
