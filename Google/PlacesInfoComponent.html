@@ -24,14 +24,13 @@
             <div class="icon-container col-xs-3 col-md-2">
                 <img id="rlimg0" ng-src="{{place.icon}}">
             </div>
-            <div class="place-name" role="heading" class="col-xs-12 col-md-2">{{place.name}}
-
-            </div>
             <div class="col-xs-12 col-md-3">
-                <span>{{place.rating}}</span>
-                <span uib-rating ng-model="place.rating" max="5" read-only="true" aria-labelledby="default-rating"></span>
-                <span class="text-muted" data-ng-if="place.opening_hours.open_now">Open now</span>
+                <span class="place-name" role="heading">{{place.name}}</span>
+                <p class="clear-both">{{place.rating}}<span uib-rating ng-model="place.rating" max="5" read-only="true" aria-labelledby="default-rating"></span></p>
+
+                <p class="text-muted" data-ng-if="place.opening_hours.open_now">Open now</p>
             </div>
+
             <div class="col-xs-12 col-md-3">{{place.formatted_address}}</div>
             <div class="col-xs-12 col-md-2">{{place.vicinity}}</div>
             <div class="col-xs-12 col-md-2">{{place.types.join(', ').split('_').join(' ')}}</div>

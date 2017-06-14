@@ -246,7 +246,8 @@ angular.module('google-places', ['ui.bootstrap'])
                 });
             }
         }
-    }]).controller('ErrorDialogController', ['$scope', '$uibModalInstance', 'message', function($scope, $modalInstance, message) {
+    }])
+    .controller('ErrorDialogController', ['$scope', '$uibModalInstance', 'message', function($scope, $modalInstance, message) {
         $scope.message = message;
         $scope.close = function() {
             $modalInstance.close();
