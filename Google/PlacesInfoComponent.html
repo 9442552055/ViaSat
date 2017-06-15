@@ -37,10 +37,10 @@
     </h4>
     <div class="list-container" data-ng-repeat="place in infoVdo.placeList">
         <div class="row list-item">
-            <div class="icon-container col-xs-3 col-md-2">
+            <div class="icon-container col-xs-3 col-md-1">
                 <img id="rlimg0" ng-src="{{place.icon}}">
             </div>
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-4">
                 <span class="place-name" role="heading">{{place.name}}</span>
                 <p class="clear-both rating-container">{{place.rating}}<span uib-rating ng-model="place.rating" max="5" read-only="true" aria-labelledby="default-rating"></span></p>
 

@@ -188,7 +188,7 @@ angular.module('google-places', ['ui.bootstrap'])
                 var unbindWatch = scope.$watch('vdo.isLoadingLocations', function(newval, oldval) {
                     if (newval && newval !== oldval) {
                         emitEventToSubcribers("ON_LOADING_PLACES", []);
-                        scope.vdo.selectedVal = '';
+                        //scope.vdo.selectedVal = '';
                     }
                 });
                 scope.$on('$destroy', function() {
